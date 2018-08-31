@@ -21,6 +21,8 @@ public class LogIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+        overridePendingTransition(R.anim.windmill_enter, R.anim.windmill_exit);
+
         edt_login_email = findViewById(R.id.edt_login_email);
         edt_login_password = findViewById(R.id.edt_login_password);
         txt_forgot_password = findViewById(R.id.txt_forgot_password);
@@ -35,6 +37,8 @@ public class LogIn extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LogIn.this, SampleActivity.class);
                 startActivity(intent);
+                finish();
+                overridePendingTransition(R.anim.windmill_exit, R.anim.windmill_enter);
            /* if (edt_login_email.getText().toString().equals("")) {
                 edt_login_email.setError("Enter Valid Email.");
             } else if (edt_login_password.getText().toString().equals("")) {
@@ -52,6 +56,8 @@ public class LogIn extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LogIn.this, ForgotPassword.class);
                 startActivity(intent);
+                finish();
+                overridePendingTransition(R.anim.windmill_exit, R.anim.windmill_enter);
             }
         });
         login_register.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +65,8 @@ public class LogIn extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LogIn.this, SignUp.class);
                 startActivity(intent);
+                finish();
+                overridePendingTransition(R.anim.windmill_exit, R.anim.windmill_enter);
             }
         });
     }

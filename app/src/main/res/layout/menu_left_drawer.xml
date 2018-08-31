@@ -8,6 +8,7 @@
 
 
     <LinearLayout
+        android:background="@android:color/transparent"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -37,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="View Profile"
-            android:textColor="#000"
+            android:textColor="@color/textmenucolor"
             android:textSize="15dp" />
 
         <View
@@ -45,7 +46,7 @@
             android:layout_height="1dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:background="@color/colorBlack" />
+            android:background="@color/background" />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView

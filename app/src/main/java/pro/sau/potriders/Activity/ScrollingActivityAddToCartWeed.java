@@ -76,6 +76,7 @@ public class ScrollingActivityAddToCartWeed extends AppCompatActivity {
                 Intent intent = new Intent(ScrollingActivityAddToCartWeed.this, ViewCartActivity.class);
                 intent.putExtra("Addtocart", "weed");
                 startActivity(intent);
+                finish();
                 overridePendingTransition(R.anim.card_exit,R.anim.card_enter);
             }
         });

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".Fragment.MyOrdersFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -27,7 +28,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:padding="16dp"
-            android:text="Ongoing Orders" />
+            android:text="ONGOING ORDERS" />
 
         <TextView
             android:layout_width="match_parent"
@@ -35,7 +36,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:padding="16dp"
-            android:text="Past Orders" />
+            android:text="PAST ORDERS" />
 
 
     </com.github.florent37.bubbletab.BubbleTab>

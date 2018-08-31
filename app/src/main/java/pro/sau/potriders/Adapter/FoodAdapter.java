@@ -1,5 +1,6 @@
 package pro.sau.potriders.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
@@ -42,6 +43,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
             public void onClick(View view) {
                 Intent intent = new Intent(context, FoodTypeActivity.class);
                 context.startActivity(intent);
+                ((Activity)context).finish();
             }
         });
     }
@@ -60,7 +62,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.ViewHolder> {
         public ViewHolder(View itemView) {
             super(itemView);
             linearLayout = itemView.findViewById(R.id.mcd);
-            card_view = (CardView) itemView.findViewById(R.id.card_view);
+            card_view = (CardView) itemView.findViewById(R.id.card_viewFood);
 
         }
     }

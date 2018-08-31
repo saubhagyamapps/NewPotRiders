@@ -33,6 +33,7 @@ public class HomeFragment extends Fragment {
         setupViewPager(viewPager);
 
         tab.setupWithViewPager(viewPager);
+
         return view;
     }
 

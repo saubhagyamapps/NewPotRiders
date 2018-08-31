@@ -30,7 +30,6 @@ public class OnGoingOrdersFragment extends Fragment {
         ongoing_recycler.setLayoutManager(new GridLayoutManager(getActivity(),1));
         OngoingOrdersAdapter ongoingOrdersAdapter=new OngoingOrdersAdapter(getActivity());
         ongoing_recycler.setAdapter(ongoingOrdersAdapter);
-
         return  view;
     }
 

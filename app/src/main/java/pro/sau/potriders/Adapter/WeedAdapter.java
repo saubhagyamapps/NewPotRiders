@@ -1,5 +1,6 @@
 package pro.sau.potriders.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
@@ -40,6 +41,7 @@ public class WeedAdapter extends RecyclerView.Adapter<WeedAdapter.ViewHolder> {
             public void onClick(View view) {
                 Intent intent = new Intent(context, WeedTypeActivity.class);
                 context.startActivity(intent);
+                ((Activity) context).finish();
             }
         });
 
@@ -57,7 +59,7 @@ public class WeedAdapter extends RecyclerView.Adapter<WeedAdapter.ViewHolder> {
         public ViewHolder(View itemView) {
             super(itemView);
             linearLayout = itemView.findViewById(R.id.weed);
-            card_view = (CardView) itemView.findViewById(R.id.card_view);
+            card_view = (CardView) itemView.findViewById(R.id.card_viewFood);
 
         }
     }

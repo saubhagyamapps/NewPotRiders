@@ -45,7 +45,7 @@ public class PastOrdersAdapter extends RecyclerView.Adapter<PastOrdersAdapter.Vi
 
         public ViewHolder(View itemView) {
             super(itemView);
-            linearLayout = (LinearLayout) itemView.findViewById(R.id.card_viewPastOders);
+            linearLayout = (LinearLayout) itemView.findViewById(R.id.card_viewPast);
         }
     }
 }

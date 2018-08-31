@@ -31,7 +31,7 @@ public class SplachScreeenAcivity extends AppCompatActivity {
         mHandler4.postDelayed(new Runnable() {
             @Override
             public void run() {
-                final Intent intent = new Intent(SplachScreeenAcivity.this, SampleActivity.class);
+                final Intent intent = new Intent(SplachScreeenAcivity.this, LogIn.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 finish();

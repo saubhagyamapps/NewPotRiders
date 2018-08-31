@@ -6,7 +6,6 @@
         <item>My order</item>
         <item>Setting</item>
         <item>Logout</item>
-
     </string-array>
 
     <array name="ld_activityScreenIcons">
@@ -14,7 +13,6 @@
         <item>@drawable/shoping</item>
         <item>@drawable/settings</item>
         <item>@drawable/logout</item>
-
     </array>
 
 </resources>

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -6,9 +6,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@color/colorAccent</item>
-
+        <item name="android:windowBackground">@color/colorBlue</item>
+        <item name="android:typeface">normal</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -16,7 +17,10 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/colorBlue</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+    </style>
 
 
     <style name="MyAppearance" parent="TextAppearance.AppCompat">
@@ -35,6 +39,7 @@
         <item name="android:textColorHighlight">@color/colorTint</item>
         <item name="android:textColorLink">@color/colorTint</item>
     </style>
+
     <style name="colorblack" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:textColorHint">@color/colorBlack</item>

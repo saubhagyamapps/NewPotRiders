@@ -1,6 +1,8 @@
 package pro.sau.potriders.Activity;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -12,9 +14,14 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -31,26 +38,21 @@ import pro.sau.potriders.R;
 import pro.sau.potriders.menu.DrawerAdapter;
 import pro.sau.potriders.menu.DrawerItem;
 import pro.sau.potriders.menu.SimpleItem;
-import pro.sau.potriders.util.Constant;
 
-/**
- * Created by yarolegovich on 25.03.2017.
- */
 
 public class SampleActivity extends AppCompatActivity implements DrawerAdapter.OnItemSelectedListener {
 
-    private static final int POS_DASHBOARD = 0;
-    private static final int POS_ACCOUNT = 1;
-    private static final int POS_MESSAGES = 2;
-    private static final int POS_CART = 3;
+    private static final int HOME = 0;
+    private static final int MY_ORDER = 1;
+    private static final int SETTING = 2;
+    private static final int LOGOUT = 3;
     private static final int POS_LOGOUT = 5;
     private static final String TAG = "SampleActivity";
     LinearLayout linearLayout, linearLayout1;
-
+    Toolbar toolbar;
     private String[] screenTitles;
     private Drawable[] screenIcons;
     private SlidingRootNav slidingRootNav;
-
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -58,20 +60,23 @@ public class SampleActivity extends AppCompatActivity implements DrawerAdapter.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main1);
         overridePendingTransition(R.anim.windmill_enter, R.anim.windmill_exit);
-        initilazation(savedInstanceState);
+        initilization(savedInstanceState);
 
 
     }
 
-    private void initilazation(Bundle savedInstanceState) {
-        Constant.toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(Constant.toolbar);
+    private void initilization(Bundle savedInstanceState) {
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.call_icon);
 
 
         slidingRootNav = new SlidingRootNavBuilder(this)
-                .withToolbarMenuToggle(Constant.toolbar)
+                .withToolbarMenuToggle(toolbar)
                 .withMenuOpened(false)
                 .withContentClickableWhenMenuOpened(true)
                 .withSavedState(savedInstanceState)
@@ -82,10 +87,10 @@ public class SampleActivity extends AppCompatActivity implements DrawerAdapter.O
         screenTitles = loadScreenTitles();
 
         DrawerAdapter adapter = new DrawerAdapter(Arrays.asList(
-                createItemFor(POS_DASHBOARD).setChecked(true),
-                createItemFor(POS_ACCOUNT),
-                createItemFor(POS_MESSAGES),
-                createItemFor(POS_CART)));
+                createItemFor(HOME).setChecked(true),
+                createItemFor(MY_ORDER),
+                createItemFor(SETTING),
+                createItemFor(LOGOUT)));
         adapter.setListener(this);
 
         RecyclerView list = findViewById(R.id.list);
@@ -93,12 +98,14 @@ public class SampleActivity extends AppCompatActivity implements DrawerAdapter.O
         list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(adapter);
 
-        adapter.setSelected(POS_DASHBOARD);
+        adapter.setSelected(HOME);
 
         ViewProfileClick();
     }
 
+
     private void ViewProfileClick() {
+
         this.findViewById(R.id.txtViewProfile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,26 +140,62 @@ public class SampleActivity extends AppCompatActivity implements DrawerAdapter.O
             FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
             fragmentTransaction1.replace(R.id.container, fragment1);
             fragmentTransaction1.commit();
+            slidingRootNav.closeMenu();
+
 
         } else if (position == 1) {
             android.support.v4.app.Fragment fragment1 = new MyOrdersFragment();
             FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
             fragmentTransaction1.replace(R.id.container, fragment1);
             fragmentTransaction1.commit();
+            slidingRootNav.closeMenu();
 
         } else if (position == 2) {
             android.support.v4.app.Fragment fragment1 = new SettingsFragment();
             FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
             fragmentTransaction1.replace(R.id.container, fragment1);
             fragmentTransaction1.commit();
-            fragment = new SettingsFragment();
+            slidingRootNav.closeMenu();
 
         } else if (position == 3) {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setIcon(R.drawable.logout_icon);
 
+            builder.setTitle("Logout");
+
+            //Setting message manually and performing action on button click
+            builder.setMessage("Are you sure you want to logout?");
+            //This will not allow to close dialogbox until user selects an option
+            builder.setCancelable(false);
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+
+                    finish();
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.cancel();
+                }
+            });
+
+
+            final AlertDialog alert = builder.create();
+            alert.setOnShowListener(new DialogInterface.OnShowListener() {
+                @SuppressLint("ResourceAsColor")
+                @Override
+                public void onShow(DialogInterface arg0) {
+                    alert.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(R.color.colorPrimaryDark);
+                    alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(R.color.colorPrimaryDark);
+                }
+            });
+
+            alert.show();
+            slidingRootNav.closeMenu();
         }
 
-        slidingRootNav.closeMenu();
-      /*  Fragment selectedScreen = CenteredTextFragment.createFor(screenTitles[position]);
+
+       /* Fragment selectedScreen = CenteredTextFragment.createFor(screenTitles[position]);
         showFragment(selectedScreen);*/
     }
 
@@ -165,10 +208,10 @@ public class SampleActivity extends AppCompatActivity implements DrawerAdapter.O
 
     private DrawerItem createItemFor(int position) {
         return new SimpleItem(screenIcons[position], screenTitles[position])
-                .withIconTint(color(R.color.colorAccent))
-                .withTextTint(color(R.color.menucolor))
-                .withSelectedIconTint(color(R.color.colorAccent))
-                .withSelectedTextTint(color(R.color.menucolor));
+                .withIconTint(color(R.color.iconmenucolor))
+                .withTextTint(color(R.color.textmenucolor))
+                .withSelectedIconTint(color(R.color.iconmenucolor))
+                .withSelectedTextTint(color(R.color.textmenucolor));
     }
 
     private String[] loadScreenTitles() {
@@ -190,6 +233,7 @@ public class SampleActivity extends AppCompatActivity implements DrawerAdapter.O
 
     @ColorInt
     private int color(@ColorRes int res) {
+
         return ContextCompat.getColor(this, res);
     }
 }

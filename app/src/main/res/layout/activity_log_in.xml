@@ -10,6 +10,7 @@
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:orientation="vertical">
 
         <ImageView
@@ -18,11 +19,9 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="80dp"
             android:src="@drawable/potrider" />
 
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -90,16 +89,17 @@
                     android:id="@+id/edt_login_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@null"
                     android:backgroundTint="@color/colorWhite"
                     android:hint="Password"
-                    android:background="@null"
-                    android:paddingTop="5dp"
                     android:inputType="textPassword"
+                    android:paddingTop="5dp"
                     android:textColor="@color/colorWhite"
                     android:textColorHint="@color/colorWhite"
                     android:textSize="15dp" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -113,7 +113,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:layout_margin="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
             android:gravity="right"
             android:text="Forgot Password?"
             android:textColor="@color/colorWhite"
@@ -123,10 +124,13 @@
             android:id="@+id/signin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginBottom="-30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/buttoncorner"
             android:text="Log In"
-            android:textColor="@color/colorBlack"
+            android:textColor="#003539"
             android:textSize="18dp" />
 
 

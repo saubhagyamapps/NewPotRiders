@@ -38,7 +38,7 @@ public class PastOrdersAdapter extends RecyclerView.Adapter<PastOrdersAdapter.Vi
                 Intent intent=new Intent(context,ScrollingActivityAddToCart.class);
                 context.startActivity(intent);
                 ((Activity)context).finish();
-//                ((AppCompatActivity) context).overridePendingTransition(R.anim.card_exit, R.anim.card_enter);
+
             }
         });
     }

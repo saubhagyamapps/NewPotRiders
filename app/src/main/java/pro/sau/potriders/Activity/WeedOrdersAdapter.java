@@ -50,7 +50,7 @@ public class WeedOrdersAdapter extends RecyclerView.Adapter<WeedOrdersAdapter.Vi
 
         public ViewHolder(View itemView) {
             super(itemView);
-            cardView = (CardView) itemView.findViewById(R.id.card_view);
+            cardView = (CardView) itemView.findViewById(R.id.card_viewFood);
         }
     }
 }

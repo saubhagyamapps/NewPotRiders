@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#00ACC0</color>
     <color name="colorPrimaryDark">#029DAF</color>
-    <color name="colorAccent">#1c3144</color>
+    <color name="colorAccent">#FFF</color>
     <color name="colorWhite">#FFF</color>
     <color name="colorBlack">#000</color>
     <color name="colorBlue">#1C3144</color>
@@ -13,6 +13,7 @@
     <color name="colorHomeBg">#EEF2F5</color>
     <color name="colorGreen">#009500</color>
     <color name="Green">#5cb85c</color>
-    <color name="menucolor">#b3b2b4</color>
+    <color name="textmenucolor">#807d9c</color>
+    <color name="iconmenucolor">#045680</color>
     <color name="background">#edeff0</color>
 </resources>

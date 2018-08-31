@@ -75,6 +75,7 @@ public class ScrollingActivityAddToCart extends AppCompatActivity {
                 Intent intent = new Intent(ScrollingActivityAddToCart.this, ViewCartActivity.class);
                 intent.putExtra("Addtocart", "Food");
                 startActivity(intent);
+                finish();
                 overridePendingTransition(R.anim.card_exit, R.anim.card_enter);
             }
         });
